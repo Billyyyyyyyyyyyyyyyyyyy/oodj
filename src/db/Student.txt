@@ -1,0 +1,13 @@
+Billy;0123456789;billy@gmail.com
+Fletcher;0198765432;fletcher@gmail.com
+Daniel;0124683579;daniel@gmail.com
+Chet;0135792468;chet@gmail.com
+Student1;0101234567;student1@gmail.com
+Student2;0102345678;student2@gmail.com
+Student3;0113456789;student3@gmail.com
+Student4;0198765432;student4@gmail.com
+Student5;0176543210;student5@gmail.com
+Student6;0102345678;student6@gmail.com
+Student7;0113456789;student7@gmail.com
+Student8;0198765432;student8@gmail.com
+Student9;0176543210;student9@gmail.com

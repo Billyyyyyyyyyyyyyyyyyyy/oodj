@@ -1,0 +1,10 @@
+Ongoing;Student1;A101;11/11/2023;10;-
+Accepted;Student3;C506;12/12/2022;20;Accepted by admin
+Declined;Student2;D777;01/01/2022;100;Declined by admin
+Declined;Student2;E888;01/01/2022;100;Declined by system(insufficeint space after accepting)
+Ongoing;Student5;B258;02/02/2022;5;-
+Accepted;Student3;C506;03/03/2022;14;Accepted by admin
+Ongoing;Student6;A101;21/12/2023;23;-
+Ongoing;Student9;D777;15/05/2023;3;-
+Ongoing;Student7;D777;26/07/2023;7;-
+Ongoing;Student8;D777;30/03/2023;38;-

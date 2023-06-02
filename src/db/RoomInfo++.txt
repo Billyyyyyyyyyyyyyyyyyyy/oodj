@@ -1,0 +1,7 @@
+A101;Single Room;1;-;-;-
+B258;Double Room;1;Billy;01/01/2023;10
+C506;Quad Room;4;-;-;-
+D777;Triple Room;2;Fletcher;02/02/2023;7
+E888;Quad Room;2;Daniel;03/03/2023;30;Chet;04/04/2023;14
+F000;Single Room;1;-;-;-
+G1234;Quad Room;4;-;-;-

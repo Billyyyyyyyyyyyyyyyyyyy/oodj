@@ -4,17 +4,39 @@
  */
 package assignment;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.lang.System.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author billytiong
  */
 public class HistoricalReport extends javax.swing.JFrame {
 
-    /**
-     * Creates new form HistoricalReport
-     */
+ 
     public HistoricalReport() {
         initComponents();
+        File file = new File("C:\Information and Communication of Technology\Diploma\Semester 5\APA\cost.txt");
+        try{
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            String [] colHeaders = br.readLine().trim().split(":");
+            DefaultTableModel model = (DefaultTableModel) Itemlist.getModel();
+                model.setColumnIdentifiers(colHeaders);
+
+                Object[] tableLines = br.lines().toArray();
+                for(int i = 0; i < tableLines.length;i++){
+                    String line = tableLines[i].toString().trim();
+                    String[] dataRow = line.split(":");
+                    model.addRow(dataRow);
+                }
+                br.close();
+        } catch (Exception ex){
+            Logger.getLogger(VendingMachine.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
