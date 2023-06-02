@@ -5,6 +5,8 @@
 package assignment;
 
 import java.io.*;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,6 +19,40 @@ public class Student extends User implements FileLocation{
     
     public Student(){
         
+    }
+
+    public static ArrayList<Student> getAll() {
+        ArrayList<Student> students = new ArrayList<Student>();
+        String line;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(studentFile));
+            while ((line = reader.readLine()) != null) {
+                String[] studentInfo = line.split(";");
+                Student student = new Student();
+                student.setUsername(studentInfo[0]);
+                student.setStudentContact(Double.parseDouble(studentInfo[1]));
+                student.setStudentEmail(studentInfo[2]);
+                students.add(student);
+            }
+            reader.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Failed access to file.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        return students;
+    }
+
+    public static Student getStudentByUsername(String username) {
+        Student student = new Student();
+
+        ArrayList<Student> students = Student.getAll();
+        for (Student tempStudent : students) {
+            String tempUsername = tempStudent.getUsername();
+            if (tempUsername.equalsIgnoreCase(username)) {
+                student = tempStudent;
+                break;
+            }
+        }
+        return student;
     }
     
     public boolean editStudentProfile(String currentStudentName){
@@ -38,7 +74,7 @@ public class Student extends User implements FileLocation{
             while ((line = reader2.readLine()) != null) {
                 String[] student = line.split(";");
                 if(currentStudentName.equals(student[1]))
-                    stringBuilder2.append(username).append(";").append(studentContact).append(";").append(studentEmail).append("\n");
+                    stringBuilder2.append(username).append(";").append(getStudentContact()).append(";").append(getStudentEmail()).append("\n");
                 else
                     stringBuilder2.append(line).append("\n");
             }
@@ -79,5 +115,33 @@ public class Student extends User implements FileLocation{
             success = false;
         }
         return success;
+    }
+
+    /**
+     * @return the studentContact
+     */
+    public double getStudentContact() {
+        return studentContact;
+    }
+
+    /**
+     * @param studentContact the studentContact to set
+     */
+    public void setStudentContact(double studentContact) {
+        this.studentContact = studentContact;
+    }
+
+    /**
+     * @return the studentEmail
+     */
+    public String getStudentEmail() {
+        return studentEmail;
+    }
+
+    /**
+     * @param studentEmail the studentEmail to set
+     */
+    public void setStudentEmail(String studentEmail) {
+        this.studentEmail = studentEmail;
     }
 }

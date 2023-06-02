@@ -14,6 +14,43 @@ public class Payment extends Report implements FileLocation{
     public Payment(){
         
     }
+
+    public String getRoomType() {
+        String roomType = "Single Room";
+        ArrayList<RoomInfo> roomInfos = RoomInfo.getAll();
+        for (RoomInfo roomInfo : roomInfos) {
+            ArrayList<String> roomStudents = roomInfo.getBookingStudent();
+            if (roomStudents.isEmpty()) {
+                continue;
+            }
+            String roomStudentName = roomStudents.get(0);
+            if (roomStudentName.equalsIgnoreCase(this.studentName)) {
+                roomType = roomInfo.getRoomType();
+                break;
+            }
+        }
+        return roomType;
+    }
+
+    public static ArrayList<Payment> getAll() {
+        ArrayList<Payment> payments = new ArrayList<Payment>();
+        String line;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(paymentFile));
+            while ((line = reader.readLine()) != null) {
+                String[] paymentInfo = line.split(";");
+                Payment payment = new Payment();
+                payment.setDate(paymentInfo[2]);
+                payment.setStudentName(paymentInfo[0]);
+                payment.setTotal(Integer.parseInt(paymentInfo[1]));
+                payments.add(payment);
+            }
+            reader.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Failed access to file.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        return payments;
+    }
     
     public ArrayList<String> accessAllMonthYear(String mode, String Year){
         ArrayList<String> allMonthYear = new ArrayList<String>();
@@ -92,7 +129,7 @@ public class Payment extends Report implements FileLocation{
         }
         return success;
     }
-    
+
     @Override
     public boolean generateReport(){
         return true;

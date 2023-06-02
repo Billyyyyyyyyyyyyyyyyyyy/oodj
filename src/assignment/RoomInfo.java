@@ -21,6 +21,42 @@ public class RoomInfo extends Report implements FileLocation{
         bookingDate.add("-");
         duration.add("-");
     }
+
+    public static ArrayList<RoomInfo> getAll() {
+        ArrayList<RoomInfo> allRoomInfo = new ArrayList<RoomInfo>();
+        String line;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(roomInfoFile));
+            while ((line = reader.readLine()) != null) {
+                String[] roomInfoString = line.split(";");
+                RoomInfo roomInfo = new RoomInfo();
+                roomInfo.setRoomNumber(roomInfoString[0]);
+                roomInfo.setRoomType(roomInfoString[1]);
+                roomInfo.setSpaceAvailable(Integer.parseInt(roomInfoString[2]));
+
+                String studentName = roomInfoString[3];
+                String bookingDate = roomInfoString[4];
+                String bookingDuration = roomInfoString[5];
+                if (!studentName.equals("-")) {
+                    ArrayList<String> studentList = new ArrayList<String>();
+                    studentList.add(studentName);
+                    roomInfo.setBookingStudent(studentList);
+                    ArrayList<String> bookingDateList = new ArrayList<String>();
+                    bookingDateList.add(bookingDate);
+                    roomInfo.setBookingDate(bookingDateList);
+                    ArrayList<String> durationList = new ArrayList<String>();
+                    durationList.add(bookingDuration);
+                    roomInfo.setDuration(durationList);
+                }
+
+                allRoomInfo.add(roomInfo);
+            }
+            reader.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Failed access to file.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        return allRoomInfo;
+    }
     
     public RoomInfo(String roomNumber){
         this.roomNumber = roomNumber;

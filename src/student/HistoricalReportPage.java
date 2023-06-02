@@ -4,17 +4,33 @@
  */
 package student;
 
+import assignment.Payment;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author billytiong
  */
 public class HistoricalReportPage extends javax.swing.JFrame {
 
+    String currentStudentName;
+
+    /**
+     * Creates new form HistoricalReport, for development purpose
+     */
+    public HistoricalReportPage() {
+        currentStudentName = "Billy";
+        initComponents();
+        initHistoryTable();
+    }
+
     /**
      * Creates new form HistoricalReport
      */
-    public HistoricalReportPage() {
+    public HistoricalReportPage(String studentName) {
+        currentStudentName = studentName;
         initComponents();
+        initHistoryTable();
     }
 
     /**
@@ -28,7 +44,7 @@ public class HistoricalReportPage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblHistory = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,7 +52,7 @@ public class HistoricalReportPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
         jLabel1.setText("History");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -47,7 +63,7 @@ public class HistoricalReportPage extends javax.swing.JFrame {
                 "Date", "Room Type", "Payment"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblHistory);
 
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -132,6 +148,19 @@ public class HistoricalReportPage extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblHistory;
     // End of variables declaration//GEN-END:variables
+
+    private void initHistoryTable() {
+        DefaultTableModel model = (DefaultTableModel) tblHistory.getModel();
+        model.setRowCount(0);
+        for (Payment payment : Payment.getAll()) {
+            String paymentStudentName = payment.getStudentName();
+            if (!paymentStudentName.equalsIgnoreCase(currentStudentName)) {
+                continue;
+            }
+            String[] rowData = {payment.getDate().toString(), payment.getRoomType(), String.valueOf(payment.getTotal())};
+            model.addRow(rowData);
+        }
+    }
 }
