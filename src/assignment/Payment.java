@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class Payment extends Report implements FileLocation{
     private String studentName;
     private int total;
-    private String Date;
+    private String date;
     
     public Payment(){
         
@@ -128,4 +128,47 @@ public class Payment extends Report implements FileLocation{
         }
       }
     };
+
+    /**
+     * @return the studentName
+     */
+    public String getStudentName() {
+        return studentName;
+    }
+
+    /**
+     * @return the total
+     */
+    public int getTotal() {
+        return total;
+    }
+
+    /**
+     * @return the date
+     */
+    public String getDate() {
+        return date;
+    }
+
+    /**
+     * @param studentName the studentName to set
+     */
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(String date) {
+        this.date = date;
+    }
+
 }
