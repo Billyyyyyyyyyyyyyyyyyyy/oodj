@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -20,7 +22,7 @@ public class FileIO {
     // Method to update the field value in the file
     public static void updateFieldInFile(String updatedValue, File file, int fieldIndex, String keyValue, int keyIndex) {
 
-        String lineToWrite = "";
+        StringBuilder lineToWrite = new StringBuilder();
 
         System.out.println(file.length());
         try (
@@ -33,15 +35,15 @@ public class FileIO {
                 String[] info = line.split(";");
                 String infoKeyValue = info[keyIndex];
                 if (!infoKeyValue.equals(keyValue)) {
-                    lineToWrite.concat(line);
+                    lineToWrite.append(line);
                 } else {
                     // found the key
                     info[fieldIndex] = updatedValue;
                     String tempUpdatedLine = String.join(";", info);
-                    lineToWrite.concat(tempUpdatedLine);
+                    lineToWrite.append(tempUpdatedLine);
                 }
 
-                lineToWrite.concat(System.getProperty("line.separator"));
+                lineToWrite.append(System.getProperty("line.separator"));
             }
 
         } catch (IOException e) {
@@ -59,5 +61,40 @@ public class FileIO {
             System.out.println("An error occurred while updating " + file + ".");
             e.printStackTrace();
         }
+    }
+    
+    private ArrayList<String> filterAvailableRooms(String selectedRoomType, String filename) {
+        ArrayList<String> availableRooms = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(";");
+                if (parts.length == 7) {
+                    String roomNumber = parts[0].trim();
+                    String roomType = parts[1].trim();
+                    String occupantCountStr = parts[2].trim();
+                    String[] occupants = Arrays.copyOfRange(parts, 3, 7);
+
+                    if (roomType.equals(selectedRoomType) && occupantCountStr.equals("-")) {
+                        boolean isOccupied = false;
+                        for (String occupant : occupants) {
+                            if (!occupant.equals("-")) {
+                                isOccupied = true;
+                                break;
+                            }
+                        }
+                        if (!isOccupied) {
+                            availableRooms.add(roomNumber);
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading " + filename + ".");
+            e.printStackTrace();
+        }
+
+        return availableRooms;
     }
 }

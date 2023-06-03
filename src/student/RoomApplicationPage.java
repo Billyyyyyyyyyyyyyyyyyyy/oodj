@@ -4,21 +4,30 @@
  */
 package student;
 
+import java.awt.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author billytiong
  */
 public class RoomApplicationPage extends javax.swing.JFrame {
-    
+
     String currentStudentName;
+
     /**
      * Creates new form RoomApplication
      */
     public RoomApplicationPage() {
         initComponents();
     }
-    
-    public RoomApplicationPage(String username){
+
+    public RoomApplicationPage(String username) {
         this();
         this.currentStudentName = username;
     }
@@ -45,6 +54,11 @@ public class RoomApplicationPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         ra_combobox_roomtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room", "Quad Room" }));
+        ra_combobox_roomtype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ra_combobox_roomtypeActionPerformed(evt);
+            }
+        });
 
         ra_label_roomtype.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         ra_label_roomtype.setText("Room Type");
@@ -142,6 +156,14 @@ public class RoomApplicationPage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_ra_button_backsmpActionPerformed
 
+    private void ra_combobox_roomtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ra_combobox_roomtypeActionPerformed
+        String selectedRoomType = ra_combobox_roomtype.getSelectedItem().toString();
+      //  List<String> availableRooms = filterAvailableRooms(selectedRoomType, "roominfo.txt");
+
+        // Update the available rooms in the combo box
+       // ra_combobox_availableroom.setModel(new DefaultComboBoxModel<>(availableRooms.toArray(new String[0])));
+    }//GEN-LAST:event_ra_combobox_roomtypeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -177,6 +199,9 @@ public class RoomApplicationPage extends javax.swing.JFrame {
             }
         });
     }
+
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ra_button_backsmp;
