@@ -4,23 +4,42 @@
  */
 package student;
 
+import assignment.Payment;
+import assignment.RoomInfo;
+import assignment.StudentApplication;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  *
  * @author billytiong
  */
 public class PaymentPage extends javax.swing.JFrame {
     String currentStudentName;
+    int selectedDuration;
+    String selectedRoomType;
+    String selectedRoomNumber;
+    int totalFee;
 
     /**
      * Creates new form Payment
      */
     public PaymentPage() {
         initComponents();
+        this.currentStudentName = "Billy";
+        this.selectedDuration = 12;
+        this.selectedRoomType = "Single Room";
+        this.selectedRoomNumber = "A101";
+        populateData();
     }
     
-    public PaymentPage(String username){
+    public PaymentPage(String username, int duration, String roomType, String roomNumber) {
         this();
         this.currentStudentName = username;
+        this.selectedDuration = duration;
+        this.selectedRoomType = roomType;
+        this.selectedRoomNumber = roomNumber;
+        populateData();
     }
 
     /**
@@ -70,6 +89,11 @@ public class PaymentPage extends javax.swing.JFrame {
         pay_label_fee.setText("Fee                   :");
 
         pay_button_pay.setText("Punch Me");
+        pay_button_pay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pay_button_payActionPerformed(evt);
+            }
+        });
 
         pay_button_backra.setText("Let Me Think");
         pay_button_backra.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +167,7 @@ public class PaymentPage extends javax.swing.JFrame {
     }//GEN-LAST:event_pay_text_durationMouseClicked
 
     private void pay_text_durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_text_durationActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_pay_text_durationActionPerformed
 
     private void pay_button_backraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_button_backraActionPerformed
@@ -151,6 +175,24 @@ public class PaymentPage extends javax.swing.JFrame {
         ra.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_pay_button_backraActionPerformed
+
+    private void pay_button_payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_button_payActionPerformed
+        // add payment to txt file
+        LocalDate currentDate = LocalDate.now();
+        String currentDateString = currentDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+        Payment newPayment = new Payment();
+        newPayment.setStudentName(currentStudentName);
+        newPayment.setTotal(totalFee);
+        newPayment.setDate(currentDateString);
+
+        Payment.addPaymentToFile(newPayment);
+
+        StudentApplication newApplication = new StudentApplication();
+        // set new application detail
+
+        // add new application to file
+    }//GEN-LAST:event_pay_button_payActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,4 +243,16 @@ public class PaymentPage extends javax.swing.JFrame {
     private javax.swing.JTextField pay_text_fee;
     private javax.swing.JTextField pay_text_roomtype;
     // End of variables declaration//GEN-END:variables
+
+    private void populateData() {
+        pay_text_roomtype.setText(selectedRoomType);
+        pay_text_duration.setText(String.valueOf(selectedDuration));
+
+        int monthlyFee = RoomInfo.getFeeByRoomType(selectedRoomType);
+
+        this.totalFee = monthlyFee * selectedDuration;
+
+        pay_text_fee.setText(String.valueOf(this.totalFee));
+
+    }
 }

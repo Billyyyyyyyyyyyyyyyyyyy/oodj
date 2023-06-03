@@ -32,6 +32,15 @@ public class Payment extends Report implements FileLocation{
         return roomType;
     }
 
+    public static void addPaymentToFile(Payment newPayment) {
+        String studentName = newPayment.getStudentName();
+        String fee = String.valueOf(newPayment.getTotal());
+        String currentDateString = newPayment.getDate();
+
+        String newRecordString = studentName + ";" + fee + ";" + currentDateString;
+        FileIO.addRecordToFile(newRecordString, paymentFile);
+    }
+
     public static ArrayList<Payment> getAll() {
         ArrayList<Payment> payments = new ArrayList<Payment>();
         String line;

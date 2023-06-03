@@ -22,6 +22,33 @@ public class RoomInfo extends Report implements FileLocation{
         duration.add("-");
     }
 
+    public static int getFeeByRoomType(String roomType) {
+        if (roomType.equalsIgnoreCase("Single Room")) {
+            return 250;
+        }
+
+        if (roomType.equalsIgnoreCase("Double Room")) {
+            return 200;
+        }
+
+
+        // pending to do
+        return 1000;
+    }
+
+    public static ArrayList<RoomInfo> filterAvailableRoomsByRoomType(String roomType) {
+        ArrayList<RoomInfo> allRoomInfos = getAll();
+        ArrayList<RoomInfo> filteredAllRoomInfos = new ArrayList<>();
+
+        for (RoomInfo roomInfo : allRoomInfos) {
+            if (roomInfo.getRoomType().equalsIgnoreCase(roomType)) {
+                filteredAllRoomInfos.add(roomInfo);
+            }
+        }
+
+        return filteredAllRoomInfos;
+    }
+
     public static ArrayList<RoomInfo> getAll() {
         ArrayList<RoomInfo> allRoomInfo = new ArrayList<RoomInfo>();
         String line;

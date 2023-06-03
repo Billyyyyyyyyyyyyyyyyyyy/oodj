@@ -4,12 +4,8 @@
  */
 package student;
 
-import java.awt.List;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import assignment.RoomInfo;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -25,6 +21,8 @@ public class RoomApplicationPage extends javax.swing.JFrame {
      */
     public RoomApplicationPage() {
         initComponents();
+        String selectedRoomType = ra_combobox_roomtype.getSelectedItem().toString();
+        populateAvailableRoomNumbers(selectedRoomType);
     }
 
     public RoomApplicationPage(String username) {
@@ -145,7 +143,10 @@ public class RoomApplicationPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ra_button_gopayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ra_button_gopayActionPerformed
-        PaymentPage pay = new PaymentPage(currentStudentName);
+        int duration = Integer.parseInt(ra_text_duration.getText());
+        String selectedRoomType = ra_combobox_roomtype.getSelectedItem().toString();
+        String selectedRoomNumber = ra_combobox_availableroom.getSelectedItem().toString();
+        PaymentPage pay = new PaymentPage(currentStudentName, duration, selectedRoomType, selectedRoomNumber);
         pay.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ra_button_gopayActionPerformed
@@ -158,11 +159,21 @@ public class RoomApplicationPage extends javax.swing.JFrame {
 
     private void ra_combobox_roomtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ra_combobox_roomtypeActionPerformed
         String selectedRoomType = ra_combobox_roomtype.getSelectedItem().toString();
-      //  List<String> availableRooms = filterAvailableRooms(selectedRoomType, "roominfo.txt");
+        populateAvailableRoomNumbers(selectedRoomType);
 
-        // Update the available rooms in the combo box
-       // ra_combobox_availableroom.setModel(new DefaultComboBoxModel<>(availableRooms.toArray(new String[0])));
     }//GEN-LAST:event_ra_combobox_roomtypeActionPerformed
+
+    private void populateAvailableRoomNumbers(String roomType) {
+        ArrayList<RoomInfo> availableRooms = RoomInfo.filterAvailableRoomsByRoomType(roomType);
+        //  List<String> availableRooms = filterAvailableRooms(selectedRoomType, "roominfo.txt");
+
+        ArrayList<String> roomNumbers = new ArrayList<>();
+        for (RoomInfo availableRoom : availableRooms) {
+            roomNumbers.add(availableRoom.getRoomNumber());
+        }
+        // Update the available rooms in the combo box
+        ra_combobox_availableroom.setModel(new DefaultComboBoxModel<>(roomNumbers.toArray(new String[0])));
+    }
 
     /**
      * @param args the command line arguments
@@ -199,8 +210,6 @@ public class RoomApplicationPage extends javax.swing.JFrame {
             }
         });
     }
-
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
