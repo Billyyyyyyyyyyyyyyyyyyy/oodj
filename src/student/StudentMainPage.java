@@ -9,12 +9,19 @@ package student;
  * @author billytiong
  */
 public class StudentMainPage extends javax.swing.JFrame {
+    
+    String currentStudentName;
 
     /**
      * Creates new form StudentMainPage
      */
     public StudentMainPage() {
         initComponents();
+    }
+    
+    public StudentMainPage(String username){
+        this();
+        this.currentStudentName = username;
     }
 
     /**
@@ -26,31 +33,31 @@ public class StudentMainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        smp_label_title = new javax.swing.JLabel();
+        smp_button_vi = new javax.swing.JButton();
+        smp_button_ra = new javax.swing.JButton();
+        smp_button_logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel1.setText("Student Main Page");
+        smp_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        smp_label_title.setText("Student Main Page");
 
-        jButton1.setText("View Information");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        smp_button_vi.setText("View Information");
+        smp_button_vi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                smp_button_viActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Room Application");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        smp_button_ra.setText("Room Application");
+        smp_button_ra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                smp_button_raActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Log Out");
+        smp_button_logout.setText("Log Out");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,44 +67,44 @@ public class StudentMainPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(97, 97, 97)
-                        .addComponent(jLabel1))
+                        .addComponent(smp_label_title))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
+                            .addComponent(smp_button_vi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(smp_button_ra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(smp_button_logout, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1)
+                .addComponent(smp_label_title)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(smp_button_vi)
+                .addGap(12, 12, 12)
+                .addComponent(smp_button_ra)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addComponent(smp_button_logout)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ViewInfoPage vi = new ViewInfoPage();
+    private void smp_button_viActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smp_button_viActionPerformed
+        ViewInfoPage vi = new ViewInfoPage(currentStudentName);
         vi.setVisible(true);
         this.dispose();
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_smp_button_viActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RoomApplicationPage ra = new RoomApplicationPage();
+    private void smp_button_raActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smp_button_raActionPerformed
+        RoomApplicationPage ra = new RoomApplicationPage(currentStudentName);
         ra.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_smp_button_raActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,9 +142,9 @@ public class StudentMainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton smp_button_logout;
+    private javax.swing.JButton smp_button_ra;
+    private javax.swing.JButton smp_button_vi;
+    private javax.swing.JLabel smp_label_title;
     // End of variables declaration//GEN-END:variables
 }

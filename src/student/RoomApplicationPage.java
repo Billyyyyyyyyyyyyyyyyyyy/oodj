@@ -9,12 +9,18 @@ package student;
  * @author billytiong
  */
 public class RoomApplicationPage extends javax.swing.JFrame {
-
+    
+    String currentStudentName;
     /**
      * Creates new form RoomApplication
      */
     public RoomApplicationPage() {
         initComponents();
+    }
+    
+    public RoomApplicationPage(String username){
+        this();
+        this.currentStudentName = username;
     }
 
     /**
@@ -26,45 +32,45 @@ public class RoomApplicationPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        ra_combobox_roomtype = new javax.swing.JComboBox<>();
+        ra_label_roomtype = new javax.swing.JLabel();
+        ra_text_duration = new javax.swing.JTextField();
+        ra_label_duration = new javax.swing.JLabel();
+        ra_label_availableroom = new javax.swing.JLabel();
+        ra_combobox_availableroom = new javax.swing.JComboBox<>();
+        ra_label_title = new javax.swing.JLabel();
+        ra_button_gopay = new javax.swing.JButton();
+        ra_button_backsmp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room", "Quad Room" }));
+        ra_combobox_roomtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Room", "Double Room", "Triple Room", "Quad Room" }));
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel1.setText("Room Type");
+        ra_label_roomtype.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        ra_label_roomtype.setText("Room Type");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel2.setText("Fee(Monthly)");
+        ra_label_duration.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        ra_label_duration.setText("Duration");
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jLabel3.setText("Available Room");
+        ra_label_availableroom.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        ra_label_availableroom.setText("Available Room");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ra_combobox_availableroom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel4.setText("Find Room that is Good & Suitable to U !!!");
+        ra_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        ra_label_title.setText("Find Room that is Good & Suitable to U !!!");
 
-        jButton1.setText("Punch me");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ra_button_gopay.setText("Punch me");
+        ra_button_gopay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ra_button_gopayActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ra_button_backsmp.setText("Back");
+        ra_button_backsmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ra_button_backsmpActionPerformed(evt);
             }
         });
 
@@ -75,64 +81,66 @@ public class RoomApplicationPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
+                    .addComponent(ra_label_title)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ra_label_roomtype)
+                            .addComponent(ra_combobox_roomtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(ra_text_duration, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ra_label_duration)
+                                .addGap(16, 16, 16)))
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ra_label_availableroom)
+                            .addComponent(ra_combobox_availableroom, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
-                .addComponent(jButton1)
+                .addComponent(ra_button_gopay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(ra_button_backsmp)
                 .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel4)
+                .addComponent(ra_label_title)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(ra_label_roomtype)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel3)))
+                        .addComponent(ra_label_duration)
+                        .addComponent(ra_label_availableroom)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ra_combobox_roomtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ra_text_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ra_combobox_availableroom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(ra_button_gopay)
+                    .addComponent(ra_button_backsmp))
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PaymentPage pay = new PaymentPage();
+    private void ra_button_gopayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ra_button_gopayActionPerformed
+        PaymentPage pay = new PaymentPage(currentStudentName);
         pay.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ra_button_gopayActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        StudentMainPage smp = new StudentMainPage();
+    private void ra_button_backsmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ra_button_backsmpActionPerformed
+        StudentMainPage smp = new StudentMainPage(currentStudentName);
         smp.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_ra_button_backsmpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,14 +179,14 @@ public class RoomApplicationPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton ra_button_backsmp;
+    private javax.swing.JButton ra_button_gopay;
+    private javax.swing.JComboBox<String> ra_combobox_availableroom;
+    private javax.swing.JComboBox<String> ra_combobox_roomtype;
+    private javax.swing.JLabel ra_label_availableroom;
+    private javax.swing.JLabel ra_label_duration;
+    private javax.swing.JLabel ra_label_roomtype;
+    private javax.swing.JLabel ra_label_title;
+    private javax.swing.JTextField ra_text_duration;
     // End of variables declaration//GEN-END:variables
 }

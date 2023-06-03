@@ -9,12 +9,18 @@ package student;
  * @author billytiong
  */
 public class PaymentPage extends javax.swing.JFrame {
+    String currentStudentName;
 
     /**
      * Creates new form Payment
      */
     public PaymentPage() {
         initComponents();
+    }
+    
+    public PaymentPage(String username){
+        this();
+        this.currentStudentName = username;
     }
 
     /**
@@ -27,52 +33,52 @@ public class PaymentPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        PaymentDate = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        pay_label_duration = new javax.swing.JLabel();
+        pay_text_duration = new javax.swing.JTextField();
+        pay_label_title = new javax.swing.JLabel();
+        pay_label_roomtype = new javax.swing.JLabel();
+        pay_text_fee = new javax.swing.JTextField();
+        pay_label_fee = new javax.swing.JLabel();
+        pay_text_roomtype = new javax.swing.JTextField();
+        pay_button_pay = new javax.swing.JButton();
+        pay_button_backra = new javax.swing.JButton();
+        pay_label_month = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Duration            :");
+        pay_label_duration.setText("Duration            :");
 
-        PaymentDate.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        PaymentDate.addMouseListener(new java.awt.event.MouseAdapter() {
+        pay_text_duration.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        pay_text_duration.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                PaymentDateMouseClicked(evt);
+                pay_text_durationMouseClicked(evt);
             }
         });
-        PaymentDate.addActionListener(new java.awt.event.ActionListener() {
+        pay_text_duration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PaymentDateActionPerformed(evt);
+                pay_text_durationActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel2.setText("Payment");
+        pay_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        pay_label_title.setText("Payment");
 
-        jLabel3.setText("Room Type       :");
+        pay_label_roomtype.setText("Room Type       :");
 
-        jLabel4.setText("Fee                   :");
+        pay_label_fee.setText("Fee                   :");
 
-        jButton1.setText("Punch Me");
+        pay_button_pay.setText("Punch Me");
 
-        jButton2.setText("Let Me Think");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        pay_button_backra.setText("Let Me Think");
+        pay_button_backra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                pay_button_backraActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("Month");
+        pay_label_month.setText("Month");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,68 +89,68 @@ public class PaymentPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
+                            .addComponent(pay_label_duration)
+                            .addComponent(pay_label_fee)
+                            .addComponent(pay_label_roomtype))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
+                            .addComponent(pay_text_roomtype, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                            .addComponent(pay_text_fee)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(PaymentDate)
+                                .addComponent(pay_text_duration)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7))))
+                                .addComponent(pay_label_month))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(jLabel2))
+                        .addComponent(pay_label_title))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jButton1)
+                        .addComponent(pay_button_pay)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)))
+                        .addComponent(pay_button_backra)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addComponent(pay_label_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pay_label_roomtype)
+                    .addComponent(pay_text_roomtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pay_label_fee)
+                    .addComponent(pay_text_fee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(PaymentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(pay_label_duration)
+                    .addComponent(pay_text_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pay_label_month))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(pay_button_pay)
+                    .addComponent(pay_button_backra))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PaymentDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PaymentDateMouseClicked
-        PaymentDate.setText(" ");
-    }//GEN-LAST:event_PaymentDateMouseClicked
+    private void pay_text_durationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pay_text_durationMouseClicked
+        pay_text_duration.setText(" ");
+    }//GEN-LAST:event_pay_text_durationMouseClicked
 
-    private void PaymentDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentDateActionPerformed
+    private void pay_text_durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_text_durationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PaymentDateActionPerformed
+    }//GEN-LAST:event_pay_text_durationActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RoomApplicationPage ra = new RoomApplicationPage();
+    private void pay_button_backraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_button_backraActionPerformed
+        RoomApplicationPage ra = new RoomApplicationPage(currentStudentName);
         ra.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_pay_button_backraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,16 +189,16 @@ public class PaymentPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField PaymentDate;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton pay_button_backra;
+    private javax.swing.JButton pay_button_pay;
+    private javax.swing.JLabel pay_label_duration;
+    private javax.swing.JLabel pay_label_fee;
+    private javax.swing.JLabel pay_label_month;
+    private javax.swing.JLabel pay_label_roomtype;
+    private javax.swing.JLabel pay_label_title;
+    private javax.swing.JTextField pay_text_duration;
+    private javax.swing.JTextField pay_text_fee;
+    private javax.swing.JTextField pay_text_roomtype;
     // End of variables declaration//GEN-END:variables
 }

@@ -42,17 +42,17 @@ public class HistoricalReportPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        hr_label_title = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblHistory = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        hr_jtable_history = new javax.swing.JTable();
+        hr_button_backvi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel1.setText("History");
+        hr_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        hr_label_title.setText("History");
 
-        tblHistory.setModel(new javax.swing.table.DefaultTableModel(
+        hr_jtable_history.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -63,12 +63,12 @@ public class HistoricalReportPage extends javax.swing.JFrame {
                 "Date", "Room Type", "Payment"
             }
         ));
-        jScrollPane1.setViewportView(tblHistory);
+        jScrollPane1.setViewportView(hr_jtable_history);
 
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hr_button_backvi.setText("Back");
+        hr_button_backvi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hr_button_backviActionPerformed(evt);
             }
         });
 
@@ -81,32 +81,32 @@ public class HistoricalReportPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(205, 205, 205)
-                        .addComponent(jLabel1))
+                        .addComponent(hr_label_title))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(203, 203, 203)
-                        .addComponent(jButton1)))
+                        .addComponent(hr_button_backvi)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addComponent(hr_label_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(hr_button_backvi)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ViewInfoPage vi = new ViewInfoPage();
+    private void hr_button_backviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hr_button_backviActionPerformed
+        ViewInfoPage vi = new ViewInfoPage(currentStudentName);
         vi.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_hr_button_backviActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,14 +145,14 @@ public class HistoricalReportPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton hr_button_backvi;
+    private javax.swing.JTable hr_jtable_history;
+    private javax.swing.JLabel hr_label_title;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblHistory;
     // End of variables declaration//GEN-END:variables
 
     private void initHistoryTable() {
-        DefaultTableModel model = (DefaultTableModel) tblHistory.getModel();
+        DefaultTableModel model = (DefaultTableModel) hr_jtable_history.getModel();
         model.setRowCount(0);
         for (Payment payment : Payment.getAll()) {
             String paymentStudentName = payment.getStudentName();

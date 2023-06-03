@@ -1,6 +1,7 @@
 package assignment;
 
 import javax.swing.*;
+import student.StudentMainPage;
 
 public class LoginPage extends javax.swing.JFrame {
     
@@ -111,6 +112,8 @@ public class LoginPage extends javax.swing.JFrame {
             txtUsername.setText("");
             txtPassword.setText("");
             if("Student".equals(u.getRole())){
+                StudentMainPage stdMainPage = new StudentMainPage(u.getUsername());
+                stdMainPage.setVisible(true);
             JOptionPane.showMessageDialog(this, "Hi student");
             }else if("Admin".equals(u.getRole())){
                 AdminPage adminpage = new AdminPage(u.getUsername());

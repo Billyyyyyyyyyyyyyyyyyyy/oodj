@@ -4,17 +4,44 @@
  */
 package student;
 
+import assignment.Student;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author billytiong
  */
 public class ProfilePage extends javax.swing.JFrame {
 
+    String currentStudentName;
+    Student student;
+
     /**
      * Creates new form Profile
      */
     public ProfilePage() {
+        currentStudentName = "Billy";
         initComponents();
+        this.student = Student.getStudentByUsername(currentStudentName);
+        populateStudentInfo();
+    }
+
+    public ProfilePage(String username) {
+        this.currentStudentName = username;
+        this.student = Student.getStudentByUsername(username);
+        initComponents();
+        populateStudentInfo();
+    }
+
+    private void populateStudentInfo() {
+        System.out.println("Hi function " + this.currentStudentName);
+        pf_text_name.setText(String.valueOf(this.currentStudentName));
+        pf_text_email.setText(String.valueOf(student.getStudentEmail()));
+        pf_text_contact.setText(String.valueOf(student.getStudentContact()));
     }
 
     /**
@@ -26,55 +53,68 @@ public class ProfilePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        pf_label_title = new javax.swing.JLabel();
+        pf_label_name = new javax.swing.JLabel();
+        pf_label_email = new javax.swing.JLabel();
+        pf_label_contact = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        pf_button_updatename = new javax.swing.JButton();
+        pf_button_updateemail = new javax.swing.JButton();
+        pf_button_updatecontact = new javax.swing.JButton();
+        pf_text_name = new javax.swing.JTextField();
+        pf_text_email = new javax.swing.JTextField();
+        pf_text_contact = new javax.swing.JTextField();
+        pf_button_backvi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel1.setText("Profile");
+        pf_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        pf_label_title.setText("Profile");
 
-        jLabel2.setText("Name    :");
+        pf_label_name.setText("Name    :");
 
-        jLabel3.setText("E-mail   :");
+        pf_label_email.setText("E-mail   :");
 
-        jLabel4.setText("Contact :");
+        pf_label_contact.setText("Contact :");
 
-        jButton1.setText("Update");
-
-        jButton2.setText("Update");
-
-        jButton3.setText("Update");
-
-        jTextField1.setEditable(false);
-
-        jTextField2.setEditable(false);
-
-        jTextField3.setEditable(false);
-
-        jButton4.setText("Delete");
-
-        jButton5.setText("Delete");
-
-        jButton6.setText("Delete");
-
-        jButton7.setText("Back");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        pf_button_updatename.setText("Update");
+        pf_button_updatename.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                pf_button_updatenameActionPerformed(evt);
+            }
+        });
+
+        pf_button_updateemail.setText("Update");
+        pf_button_updateemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pf_button_updateemailActionPerformed(evt);
+            }
+        });
+
+        pf_button_updatecontact.setText("Update");
+        pf_button_updatecontact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pf_button_updatecontactActionPerformed(evt);
+            }
+        });
+
+        pf_text_name.setEditable(false);
+        pf_text_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pf_text_nameActionPerformed(evt);
+            }
+        });
+
+        pf_text_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pf_text_emailActionPerformed(evt);
+            }
+        });
+
+        pf_button_backvi.setText("Back");
+        pf_button_backvi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pf_button_backviActionPerformed(evt);
             }
         });
 
@@ -82,38 +122,6 @@ public class ProfilePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(201, 201, 201))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton5))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton6))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4))))
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -121,47 +129,109 @@ public class ProfilePage extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jButton7)))
+                        .addComponent(pf_button_backvi)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(pf_label_title)
+                        .addGap(201, 201, 201))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pf_label_email)
+                            .addComponent(pf_label_name)
+                            .addComponent(pf_label_contact))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(pf_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pf_button_updateemail)
+                                    .addComponent(pf_button_updatecontact)
+                                    .addComponent(pf_button_updatename)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pf_text_contact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pf_text_email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)))
+                        .addGap(78, 78, 78))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(jLabel1)
+                .addComponent(pf_label_title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(pf_label_name)
+                    .addComponent(pf_button_updatename, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pf_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(pf_label_email)
+                    .addComponent(pf_button_updateemail, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pf_text_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(pf_label_contact)
+                    .addComponent(pf_button_updatecontact, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pf_text_contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(pf_button_backvi)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        ViewInfoPage vi = new ViewInfoPage();
+    private void pf_button_backviActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_button_backviActionPerformed
+        ViewInfoPage vi = new ViewInfoPage(currentStudentName);
         vi.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_pf_button_backviActionPerformed
+
+    private void pf_button_updatenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_button_updatenameActionPerformed
+        String updatedName = pf_text_name.getText(); // Get the updated name from the text field
+    
+        // Update the field with the updated value
+        pf_text_name.setText(updatedName);
+
+        // Write the new field to the file
+        // updateFieldInFile(updatedName, "studentFile", "Name");
+    }//GEN-LAST:event_pf_button_updatenameActionPerformed
+
+    private void pf_button_updateemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_button_updateemailActionPerformed
+        String updatedEmail = pf_text_email.getText(); // Get the updated name from the text field
+    
+        // Update the field with the updated value
+        pf_text_email.setText(updatedEmail);
+
+        // Write the new field to the file
+        this.student.updateFieldInFile(updatedEmail, "email");
+
+    }//GEN-LAST:event_pf_button_updateemailActionPerformed
+
+    private void pf_text_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_text_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pf_text_nameActionPerformed
+
+    private void pf_button_updatecontactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_button_updatecontactActionPerformed
+        String updatedContact = pf_text_contact.getText(); // Get the updated name from the text field
+    
+        // Update the field with the updated value
+        pf_text_contact.setText(updatedContact);
+
+        // Write the new field to the file
+        this.student.updateFieldInFile(updatedContact, "contact");
+    }//GEN-LAST:event_pf_button_updatecontactActionPerformed
+
+    private void pf_text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_text_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pf_text_emailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,21 +269,19 @@ public class ProfilePage extends javax.swing.JFrame {
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton pf_button_backvi;
+    private javax.swing.JButton pf_button_updatecontact;
+    private javax.swing.JButton pf_button_updateemail;
+    private javax.swing.JButton pf_button_updatename;
+    private javax.swing.JLabel pf_label_contact;
+    private javax.swing.JLabel pf_label_email;
+    private javax.swing.JLabel pf_label_name;
+    private javax.swing.JLabel pf_label_title;
+    private javax.swing.JTextField pf_text_contact;
+    private javax.swing.JTextField pf_text_email;
+    private javax.swing.JTextField pf_text_name;
     // End of variables declaration//GEN-END:variables
 }

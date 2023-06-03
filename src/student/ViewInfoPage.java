@@ -9,12 +9,19 @@ package student;
  * @author billytiong
  */
 public class ViewInfoPage extends javax.swing.JFrame {
-
+    
+    String currentStudentName;
     /**
      * Creates new form Application
      */
     public ViewInfoPage() {
+        currentStudentName = "Billy";
         initComponents();
+    }
+    
+    public ViewInfoPage(String username){
+        this();
+        this.currentStudentName = username;
     }
 
     /**
@@ -27,36 +34,44 @@ public class ViewInfoPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        vi_label_title = new javax.swing.JLabel();
+        vi_button_profile = new javax.swing.JButton();
+        vi_button_hr = new javax.swing.JButton();
+        vi_label_profile = new javax.swing.JLabel();
+        vi_label_hr = new javax.swing.JLabel();
+        vi_button_backsmp = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel2.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel2.setText("View Info");
+        vi_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        vi_label_title.setText("View Info");
 
-        jButton2.setText("Punch Me");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        vi_button_profile.setText("Punch Me");
+        vi_button_profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                vi_button_profileActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Punch Me");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        vi_button_hr.setText("Punch Me");
+        vi_button_hr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                vi_button_hrActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Personal Info Portal       :");
+        vi_label_profile.setText("Personal Info Portal       :");
 
-        jLabel4.setText("Historical Record Portal :");
+        vi_label_hr.setText("Historical Record Portal :");
+
+        vi_button_backsmp.setText("Back");
+        vi_button_backsmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vi_button_backsmpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,49 +81,61 @@ public class ViewInfoPage extends javax.swing.JFrame {
                 .addGap(0, 49, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(vi_label_hr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)
+                        .addComponent(vi_button_hr)
                         .addGap(82, 82, 82))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(vi_label_title)
                         .addGap(138, 138, 138))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(vi_label_profile)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(vi_button_profile)
                         .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(vi_button_backsmp)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+                .addComponent(vi_label_title)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton2))
+                    .addComponent(vi_label_profile)
+                    .addComponent(vi_button_profile))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton3))
-                .addContainerGap(53, Short.MAX_VALUE))
+                    .addComponent(vi_label_hr)
+                    .addComponent(vi_button_hr))
+                .addGap(18, 18, 18)
+                .addComponent(vi_button_backsmp)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        HistoricalReportPage hr = new HistoricalReportPage();
+    private void vi_button_hrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vi_button_hrActionPerformed
+        HistoricalReportPage hr = new HistoricalReportPage(currentStudentName);
         hr.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_vi_button_hrActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        ProfilePage pf = new ProfilePage();
+    private void vi_button_profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vi_button_profileActionPerformed
+        ProfilePage pf = new ProfilePage(currentStudentName);
         pf.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_vi_button_profileActionPerformed
+
+    private void vi_button_backsmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vi_button_backsmpActionPerformed
+        StudentMainPage smp = new StudentMainPage(currentStudentName);
+        smp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_vi_button_backsmpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,11 +180,12 @@ public class ViewInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton vi_button_backsmp;
+    private javax.swing.JButton vi_button_hr;
+    private javax.swing.JButton vi_button_profile;
+    private javax.swing.JLabel vi_label_hr;
+    private javax.swing.JLabel vi_label_profile;
+    private javax.swing.JLabel vi_label_title;
     // End of variables declaration//GEN-END:variables
 }

@@ -20,6 +20,23 @@ public class Student extends User implements FileLocation{
     public Student(){
         
     }
+    
+    public void updateFieldInFile(String updatedValue, String fieldName){
+        int fieldIndex = -1;
+        if(fieldName.equalsIgnoreCase("contact")){
+            fieldIndex = 1;
+        }
+        if(fieldName.equalsIgnoreCase("email")){
+            fieldIndex = 2;
+        }
+        
+        if(fieldIndex == -1 ){
+            // print error
+            return;
+        }
+        
+        FileIO.updateFieldInFile(updatedValue, studentFile, fieldIndex, this.getUsername(), 0);
+    }
 
     public static ArrayList<Student> getAll() {
         ArrayList<Student> students = new ArrayList<Student>();
