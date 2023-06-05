@@ -4,6 +4,9 @@
  */
 package student;
 
+import assignment.LoginPage;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author billytiong
@@ -58,6 +61,11 @@ public class StudentMainPage extends javax.swing.JFrame {
         });
 
         smp_button_logout.setText("Log Out");
+        smp_button_logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                smp_button_logoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +113,25 @@ public class StudentMainPage extends javax.swing.JFrame {
         ra.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_smp_button_raActionPerformed
+
+    private void smp_button_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smp_button_logoutActionPerformed
+            // Create the message box with "Yes" and "No" buttons
+        int result = JOptionPane.showOptionDialog(this, "Are you sure?", "Confirmation",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                new Object[]{"Yes", "No"}, "No");
+
+        // Check the user's choice
+        if (result == JOptionPane.YES_OPTION) {
+            // User clicked "Yes", perform the desired action
+            // For example, navigate to another page
+            LoginPage lp = new LoginPage();
+            lp.setVisible(true);
+            this.dispose();
+        } else {
+            // User clicked "No", close the message box
+            JOptionPane.getRootFrame().dispose();
+        }
+    }//GEN-LAST:event_smp_button_logoutActionPerformed
 
     /**
      * @param args the command line arguments

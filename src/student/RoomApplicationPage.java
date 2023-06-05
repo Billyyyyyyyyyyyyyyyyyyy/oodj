@@ -61,8 +61,14 @@ public class RoomApplicationPage extends javax.swing.JFrame {
         ra_label_roomtype.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         ra_label_roomtype.setText("Room Type");
 
+        ra_text_duration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ra_text_durationActionPerformed(evt);
+            }
+        });
+
         ra_label_duration.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        ra_label_duration.setText("Duration");
+        ra_label_duration.setText("Duration (Month)");
 
         ra_label_availableroom.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         ra_label_availableroom.setText("Available Room");
@@ -99,16 +105,14 @@ public class RoomApplicationPage extends javax.swing.JFrame {
                             .addComponent(ra_label_roomtype)
                             .addComponent(ra_combobox_roomtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ra_text_duration, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(ra_label_duration)
-                                .addGap(16, 16, 16)))
-                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ra_label_duration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ra_text_duration))
+                        .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ra_label_availableroom)
                             .addComponent(ra_combobox_availableroom, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addComponent(ra_button_gopay)
@@ -125,8 +129,8 @@ public class RoomApplicationPage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ra_label_roomtype)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ra_label_duration)
-                        .addComponent(ra_label_availableroom)))
+                        .addComponent(ra_label_availableroom)
+                        .addComponent(ra_label_duration)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ra_combobox_roomtype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,6 +166,10 @@ public class RoomApplicationPage extends javax.swing.JFrame {
         populateAvailableRoomNumbers(selectedRoomType);
 
     }//GEN-LAST:event_ra_combobox_roomtypeActionPerformed
+
+    private void ra_text_durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ra_text_durationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ra_text_durationActionPerformed
 
     private void populateAvailableRoomNumbers(String roomType) {
         ArrayList<RoomInfo> availableRooms = RoomInfo.filterAvailableRoomsByRoomType(roomType);

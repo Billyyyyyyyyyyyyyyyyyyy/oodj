@@ -14,11 +14,21 @@ import javax.swing.JOptionPane;
  */
 public class Student extends User implements FileLocation{
     
-    private double studentContact;
+    private String studentContact;
     private String studentEmail;
+    
     
     public Student(){
         
+    }
+    
+    public static void addStudentToFile(Student newStudent){
+        String studentName = newStudent.getUsername();
+        String studentContact = newStudent.getStudentContact();
+        String studentEmail = newStudent.getStudentEmail();
+        
+        String newRecordString = studentName + ";" + studentContact + ";" + studentEmail;
+        FileIO.addRecordToFile(newRecordString, studentFile);
     }
     
     public void updateFieldInFile(String updatedValue, String fieldName){
@@ -31,7 +41,7 @@ public class Student extends User implements FileLocation{
         }
         
         if(fieldIndex == -1 ){
-            // print error
+            System.out.println("Update file unsuccessful.");
             return;
         }
         
@@ -47,7 +57,7 @@ public class Student extends User implements FileLocation{
                 String[] studentInfo = line.split(";");
                 Student student = new Student();
                 student.setUsername(studentInfo[0]);
-                student.setStudentContact(Double.parseDouble(studentInfo[1]));
+                student.setStudentContact(studentInfo[1]);
                 student.setStudentEmail(studentInfo[2]);
                 students.add(student);
             }
@@ -137,14 +147,14 @@ public class Student extends User implements FileLocation{
     /**
      * @return the studentContact
      */
-    public double getStudentContact() {
+    public String getStudentContact() {
         return studentContact;
     }
 
     /**
      * @param studentContact the studentContact to set
      */
-    public void setStudentContact(double studentContact) {
+    public void setStudentContact(String studentContact) {
         this.studentContact = studentContact;
     }
 
@@ -161,4 +171,5 @@ public class Student extends User implements FileLocation{
     public void setStudentEmail(String studentEmail) {
         this.studentEmail = studentEmail;
     }
+    
 }

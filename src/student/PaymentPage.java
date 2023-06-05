@@ -9,6 +9,9 @@ import assignment.RoomInfo;
 import assignment.StudentApplication;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -87,6 +90,12 @@ public class PaymentPage extends javax.swing.JFrame {
         pay_label_roomtype.setText("Room Type       :");
 
         pay_label_fee.setText("Fee                   :");
+
+        pay_text_roomtype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pay_text_roomtypeActionPerformed(evt);
+            }
+        });
 
         pay_button_pay.setText("Punch Me");
         pay_button_pay.addActionListener(new java.awt.event.ActionListener() {
@@ -187,12 +196,27 @@ public class PaymentPage extends javax.swing.JFrame {
         newPayment.setDate(currentDateString);
 
         Payment.addPaymentToFile(newPayment);
-
-        StudentApplication newApplication = new StudentApplication();
-        // set new application detail
+        
+        // add application to txt file
+        StudentApplication newStudentApplication = new StudentApplication();
+        newStudentApplication.setStatus("Ongoing");
+        newStudentApplication.setStudentName(currentStudentName);
+        newStudentApplication.setRoomNumber(selectedRoomNumber);
+        newStudentApplication.setBookingDate(currentDateString);
+        newStudentApplication.setDuration(Integer.toString(selectedDuration));
+        newStudentApplication.setreason("-");
+        
 
         // add new application to file
+        StudentApplication.addStudentApplicationtToFile(newStudentApplication);
+        
+        // Show a message box with "Payment success" message
+        JOptionPane.showMessageDialog(this, "Payment Success", "Payment", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_pay_button_payActionPerformed
+
+    private void pay_text_roomtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pay_text_roomtypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pay_text_roomtypeActionPerformed
 
     /**
      * @param args the command line arguments

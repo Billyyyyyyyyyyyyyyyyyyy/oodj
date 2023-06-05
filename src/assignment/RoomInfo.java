@@ -30,10 +30,12 @@ public class RoomInfo extends Report implements FileLocation{
         if (roomType.equalsIgnoreCase("Double Room")) {
             return 200;
         }
-
-
-        // pending to do
-        return 1000;
+        
+        if (roomType.equalsIgnoreCase("Triple Room")){
+            return 150;
+        }
+        
+        return 100;
     }
 
     public static ArrayList<RoomInfo> filterAvailableRoomsByRoomType(String roomType) {

@@ -17,6 +17,7 @@ public class StudentApplication extends Report implements FileLocation{
     private String roomNumber;
     private String bookingDate;
     private String duration;
+    private String reason;
     
     public StudentApplication(String studentName){
         this.studentName = studentName;
@@ -40,6 +41,18 @@ public class StudentApplication extends Report implements FileLocation{
     
     public StudentApplication(){
     
+    }
+    
+    public static void addStudentApplicationtToFile(StudentApplication newStudentApplication) {
+        String status = newStudentApplication.getStatus();
+        String studentName = newStudentApplication.getStudentName();
+        String roomNumber = newStudentApplication.getRoomNumber();
+        String currentDateString = newStudentApplication.getBookingDate();
+        String duration = newStudentApplication.getDuration();
+        String reason = newStudentApplication.getreason();
+
+        String newRecordString = status + ";" + studentName + ";" + roomNumber + ";" + currentDateString + ";" + duration + ";" + reason;
+        FileIO.addRecordToFile(newRecordString, studentApplicationFile);
     }
     
     public boolean editRoomNumber(String currentRoomNumber, String newRoomNumber){
@@ -196,6 +209,10 @@ public class StudentApplication extends Report implements FileLocation{
     public String getDuration() {
         return duration;
     }
+    
+    public String getreason(){
+        return reason;
+    }
 
     /**
      * @param status the status to set
@@ -230,5 +247,9 @@ public class StudentApplication extends Report implements FileLocation{
      */
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+    
+    public void setreason(String reason){
+        this.reason = reason;
     }
 }

@@ -50,23 +50,17 @@
                           <Component id="pf_label_contact" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="pf_text_name" alignment="1" min="-2" pref="131" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="pf_text_contact" min="-2" pref="131" max="-2" attributes="0"/>
+                              <Component id="pf_text_email" min="-2" pref="131" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="pf_text_name" min="-2" pref="114" max="-2" attributes="0"/>
-                              <EmptySpace min="31" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="pf_button_updateemail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pf_button_updatecontact" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pf_button_updatename" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="pf_text_contact" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                                  <Component id="pf_text_email" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="pf_button_updateemail" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="pf_button_updatecontact" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
@@ -84,7 +78,6 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="pf_label_name" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="pf_button_updatename" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="pf_text_name" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -132,14 +125,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
     </Component>
-    <Component class="javax.swing.JButton" name="pf_button_updatename">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pf_button_updatenameActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="pf_button_updateemail">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update"/>
@@ -170,6 +155,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="pf_text_contact">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pf_text_contactActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="pf_button_backvi">
       <Properties>

@@ -58,7 +58,6 @@ public class ProfilePage extends javax.swing.JFrame {
         pf_label_email = new javax.swing.JLabel();
         pf_label_contact = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        pf_button_updatename = new javax.swing.JButton();
         pf_button_updateemail = new javax.swing.JButton();
         pf_button_updatecontact = new javax.swing.JButton();
         pf_text_name = new javax.swing.JTextField();
@@ -76,13 +75,6 @@ public class ProfilePage extends javax.swing.JFrame {
         pf_label_email.setText("E-mail   :");
 
         pf_label_contact.setText("Contact :");
-
-        pf_button_updatename.setText("Update");
-        pf_button_updatename.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pf_button_updatenameActionPerformed(evt);
-            }
-        });
 
         pf_button_updateemail.setText("Update");
         pf_button_updateemail.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +100,12 @@ public class ProfilePage extends javax.swing.JFrame {
         pf_text_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pf_text_emailActionPerformed(evt);
+            }
+        });
+
+        pf_text_contact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pf_text_contactActionPerformed(evt);
             }
         });
 
@@ -143,19 +141,15 @@ public class ProfilePage extends javax.swing.JFrame {
                             .addComponent(pf_label_name)
                             .addComponent(pf_label_contact))
                         .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pf_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pf_text_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pf_text_email, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(pf_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(pf_button_updateemail)
-                                    .addComponent(pf_button_updatecontact)
-                                    .addComponent(pf_button_updatename)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(pf_text_contact, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(pf_text_email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)))
+                            .addComponent(pf_button_updateemail)
+                            .addComponent(pf_button_updatecontact))
                         .addGap(78, 78, 78))))
         );
         layout.setVerticalGroup(
@@ -168,7 +162,6 @@ public class ProfilePage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pf_label_name)
-                    .addComponent(pf_button_updatename, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pf_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -193,16 +186,6 @@ public class ProfilePage extends javax.swing.JFrame {
         vi.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_pf_button_backviActionPerformed
-
-    private void pf_button_updatenameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_button_updatenameActionPerformed
-        String updatedName = pf_text_name.getText(); // Get the updated name from the text field
-    
-        // Update the field with the updated value
-        pf_text_name.setText(updatedName);
-
-        // Write the new field to the file
-        // updateFieldInFile(updatedName, "studentFile", "Name");
-    }//GEN-LAST:event_pf_button_updatenameActionPerformed
 
     private void pf_button_updateemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_button_updateemailActionPerformed
         String updatedEmail = pf_text_email.getText(); // Get the updated name from the text field
@@ -232,6 +215,10 @@ public class ProfilePage extends javax.swing.JFrame {
     private void pf_text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_text_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pf_text_emailActionPerformed
+
+    private void pf_text_contactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pf_text_contactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pf_text_contactActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,7 +262,6 @@ public class ProfilePage extends javax.swing.JFrame {
     private javax.swing.JButton pf_button_backvi;
     private javax.swing.JButton pf_button_updatecontact;
     private javax.swing.JButton pf_button_updateemail;
-    private javax.swing.JButton pf_button_updatename;
     private javax.swing.JLabel pf_label_contact;
     private javax.swing.JLabel pf_label_email;
     private javax.swing.JLabel pf_label_name;

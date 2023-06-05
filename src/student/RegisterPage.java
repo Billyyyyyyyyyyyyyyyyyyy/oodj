@@ -4,11 +4,19 @@
  */
 package student;
 
+import assignment.Student;
+import assignment.User;
+
 /**
  *
  * @author billytiong
  */
 public class RegisterPage extends javax.swing.JFrame {
+    String username;
+    String password;
+    int contact;
+    String email;
+    
 
     /**
      * Creates new form FirstPage
@@ -16,6 +24,7 @@ public class RegisterPage extends javax.swing.JFrame {
     public RegisterPage() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,47 +35,52 @@ public class RegisterPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        ng_button_cancel = new javax.swing.JButton();
+        ng_button_register = new javax.swing.JButton();
+        ng_label_name = new javax.swing.JLabel();
+        ng_label_contact = new javax.swing.JLabel();
+        ng_label_title = new javax.swing.JLabel();
+        ng_label_email = new javax.swing.JLabel();
+        ng_label_password = new javax.swing.JLabel();
+        ng_text_contact = new javax.swing.JTextField();
+        ng_text_name = new javax.swing.JTextField();
+        ng_text_email = new javax.swing.JTextField();
+        ng_text_password = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Cancel");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ng_button_cancel.setText("Cancel");
+        ng_button_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ng_button_cancelActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Register");
+        ng_button_register.setText("Register");
+        ng_button_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ng_button_registerActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setText("Name       :");
+        ng_label_name.setText("Name       :");
 
-        jLabel2.setText("Contact    :");
+        ng_label_contact.setText("Contact    :");
 
-        jLabel3.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
-        jLabel3.setText("New Register");
+        ng_label_title.setFont(new java.awt.Font("Bradley Hand", 0, 24)); // NOI18N
+        ng_label_title.setText("New Register");
 
-        jLabel4.setText("E-mail      :");
+        ng_label_email.setText("E-mail      :");
 
-        jLabel5.setText("Password :");
+        ng_label_password.setText("Password :");
 
-        jTextField1.setToolTipText("");
+        ng_text_contact.setToolTipText("");
 
-        jTextField2.setToolTipText("");
+        ng_text_name.setToolTipText("");
 
-        jTextField3.setToolTipText("");
+        ng_text_email.setToolTipText("");
 
-        jTextField4.setToolTipText("");
+        ng_text_password.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,65 +92,87 @@ public class RegisterPage extends javax.swing.JFrame {
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(ng_label_contact)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ng_text_contact, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(30, 30, 30)
-                                    .addComponent(jButton2)
+                                    .addComponent(ng_button_register)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1))
+                                    .addComponent(ng_button_cancel))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel1)
+                                        .addComponent(ng_label_name)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4)))
+                                            .addComponent(ng_label_password)
+                                            .addComponent(ng_label_email)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(ng_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ng_text_email, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ng_text_password, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(jLabel3)))
+                        .addComponent(ng_label_title)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel3)
+                .addComponent(ng_label_title)
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ng_label_name)
+                    .addComponent(ng_text_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ng_label_contact)
+                    .addComponent(ng_text_contact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ng_label_email)
+                    .addComponent(ng_text_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ng_label_password)
+                    .addComponent(ng_text_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(ng_button_cancel)
+                    .addComponent(ng_button_register))
                 .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ng_button_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ng_button_cancelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_ng_button_cancelActionPerformed
+
+    private void ng_button_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ng_button_registerActionPerformed
+
+        User newUser = new User();
+        username = ng_text_name.getText();
+        password = ng_text_password.getText();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        newUser.setRole("Student");
+            
+        User.addUserToFile(newUser);
+        
+        Student newStudent = new Student();
+        //contact = ng_text_contact.getText();
+        email = ng_text_email.getText();
+        
+        newStudent.setUsername(username);
+        newStudent.setStudentContact(Integer.toString(contact));
+        newStudent.setStudentEmail(email);
+        
+        Student.addStudentToFile(newStudent);
+    }//GEN-LAST:event_ng_button_registerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,16 +213,16 @@ public class RegisterPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton ng_button_cancel;
+    private javax.swing.JButton ng_button_register;
+    private javax.swing.JLabel ng_label_contact;
+    private javax.swing.JLabel ng_label_email;
+    private javax.swing.JLabel ng_label_name;
+    private javax.swing.JLabel ng_label_password;
+    private javax.swing.JLabel ng_label_title;
+    private javax.swing.JTextField ng_text_contact;
+    private javax.swing.JTextField ng_text_email;
+    private javax.swing.JTextField ng_text_name;
+    private javax.swing.JTextField ng_text_password;
     // End of variables declaration//GEN-END:variables
 }
